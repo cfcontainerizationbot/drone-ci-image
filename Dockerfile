@@ -21,11 +21,11 @@ RUN zypper --non-interactive install \
 RUN pip install --upgrade pip && \
     pip install yq
 
-RUN https://download.docker.com/linux/static/stable/x86_64/docker-18.09.6.tgz | tar -xz -C /tmp/ && \
+RUN curl -fsL https://download.docker.com/linux/static/stable/x86_64/docker-18.09.6.tgz | tar -xz -C /tmp/ && \
     cp /tmp/docker/docker /usr/bin/docker && \
     rm -rf /tmp/docker
 
-RUN curl --progress-bar --location https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz | tar -xzf - -C /tmp linux-amd64/helm && \
+RUN curl -fsL https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz | tar -xzf - -C /tmp linux-amd64/helm && \
     mv /tmp/linux-amd64/helm /usr/bin/helm && \
     rm -rf /tmp/linux-amd64/
 
